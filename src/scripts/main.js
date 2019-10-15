@@ -1,6 +1,3 @@
-
-
-
 //Here is our array of students. They are all objects! You can tell by the curly brackets and the key value pairs.
 const students = [
     {
@@ -82,7 +79,12 @@ let studentClass;
 
 //This is our function. It takes four parameters: name, subject, info, score. First we start off with a conditional statement that checks whether the score is above or equal to 70 (a passing score) and if not, a failing score. We're setting those values to strings so we can use interpolation to set the class of the h1 to either passing or failing. Then, we return a string of HTML that takes the arguments we have passed in to the function.
 const createStudentComponent = function (name, subject, info, score) {
-
+    if (score >= 70) {
+        studentClass = "passing"
+    }
+    else {
+        studentClass = "failing"
+    }
     return `
         <div class="student">
             <h1 class="${studentClass}">${name}</h1>
@@ -93,12 +95,6 @@ const createStudentComponent = function (name, subject, info, score) {
         </div>
     `
 }
-
-`<div class="student">
-<h1 class="xx-large passing">Student Name</h1>
-<section class="bordered dashed section--padded">Subject</section>
-<aside class="pushRight">Additional information</aside>
-</div>`
 
 //This is our variable that is an empty string. It exists outside of our loop so we can build on to it with each iteration of the loop.
 let studentHTML = "";
@@ -111,22 +107,19 @@ for (let i = 0; i < students.length; i++) {
         students[i].score);
     studentHTML += singleStudentHTML;
     console.log(studentHTML);
-
-
-// this is a "for of" loop- these itterate through each object of an array//
-for (const student of students) {
-    let studentComponent = ""
-    if (student.score >= 60) {    
-        studentComponent = "passing"
-    } else {
-        studentComponent = "failing"
-    }
 }
-
-
-        // I love you Shawna!!!!! Kissy moos! You're doing better than you think!
 
 //We're using querySelector to get a reference to the div with the id container. We store that in a variable called studentContainer. Then we use innerHTML on studentContainer (the empty div in our html file) and set that to studentHTML, which now contains all of our student HTML! And we did it all in JavaScript, how cool!
 const studentContainer = document.querySelector("#container");
 studentContainer.innerHTML = studentHTML;
 
+
+// console.log(createStudentComponent());
+// debugger
+// const studentContainer = document.querySelector("#container");
+// const cohortSection = document.querySelector(".cohort-section");
+// console.log(cohortSection);
+// studentContainer.innerHTML = createStudentComponent("Rose", "being cool", "excellent!!!");
+
+
+// I love you Shawna!!!!! Kissy moos! You're doing better than you think!
